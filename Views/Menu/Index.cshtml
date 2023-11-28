@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Hospitality.Models.Floor>
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<body>
+<div id="wrapper">
+
+    <div id="menu">
+        <ul>
+            <li><a href="#">Menu Item 1</a></li>
+                @if (User.IsInRole("Manager"))
+                {
+            <li><a href="~/Redact/Building">Редагувати</a></li>
+                }
+        </ul>
+    </div>
+
+    <div id="content">
+	<div class="container-for-view">
+		<table>
+			<tr>
+				<td><h3>Поверхи</h3></td>
+				<td colspan="5"><h3>Кімнати</h3></td>
+			</tr>
+			@foreach (var floor in Model)
+			{
+			<tr>
+				<td class="centercell">
+					<div class="outer-box">
+						<h3>@floor.Index</h3>
+					</div>
+				</td>
+				@foreach (var room in floor.Rooms)
+				{
+				<td>
+					<div class="inner-box">
+						<h3>@room.Name</h3>
+					</div>
+				</td>
+				}
+			</tr>
+			}
+		</table>
+	</div>
+    </div>
+
+    <div id="list">
+        <!-- Your list content goes here -->
+        <ul>
+            <li>List Item 1</li>
+            <li>List Item 2</li>
+            <li>List Item 3</li>
+            <!-- Add more list items as needed -->
+        </ul>
+    </div>
+
+</div>
+</body>

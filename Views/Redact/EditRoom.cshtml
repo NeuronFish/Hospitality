@@ -1,0 +1,20 @@
+﻿@model Hospitality.Models.Room
+@{
+    ViewData["Title"] = "Room Redact";
+}
+
+<body>
+    <div class="form-body">
+        <div class="form-container">
+            <h2 class="text-center">Кімната</h2>
+            <form asp-action="EditRoom">
+                <input type="hidden" asp-for="Id"/>
+                <div class="form-group">
+                    <label asp-for="Name">Назва</label>
+                    <input asp-for="Name" type="text" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Зберегти</button>
+            </form>
+        </div>
+    </div>
+</body>

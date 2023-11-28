@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Hospitality.Models.Floor>
+@{
+    ViewData["Title"] = "Building Redact";
+}
+
+<body>
+	<div class="container-for-view">
+		<table>
+			<tr>
+				<td colspan="2"><h3>Поверхи</h3></td>
+				<td colspan="5"><h3>Кімнати</h3></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<a asp-action="AddFloor" class="btn btn-success">
+						<i class="fas fa-plus"></i> Додати поверх
+					</a>
+				</td>
+				<td></td>
+			</tr>
+			@foreach (var floor in Model)
+			{
+			<tr>
+				<td>
+					<a asp-action="Delete" asp-route-floorId="@floor.Id" 
+					class="btn btn-success">
+						<i class="fas fa-plus"></i> Видалити
+					</a>
+				</td>
+				<td class="centercell">
+					<div class="outer-box">
+						<h3>@floor.Index</h3>
+					</div>
+				</td>
+				@foreach (var room in floor.Rooms)
+				{
+				<td>
+					<div class="inner-box">
+						<h3>@room.Name</h3>
+						<a asp-action="EditRoom" asp-route-roomId="@room.Id">
+							<input type="image" src="/images/blog/72/button.png" alt="Button">
+						</a>
+					</div>
+				</td>
+				}
+				<td>
+					<a asp-action="AddRoom" asp-route-floorId="@floor.Id" 
+					class="btn btn-success">
+						<i class="fas fa-plus"></i> Додати
+					</a>
+				</td>
+			</tr>
+			}
+		</table>
+	</div>
+</body>

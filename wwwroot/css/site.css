@@ -1,0 +1,136 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+footer {
+    text-align: center;
+}
+
+.right-align {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.background-image {
+    background-image: url('../pic/Main.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.maintext {
+    font: 1.2rem "Fira Sans", sans-serif;
+    font-size: 25px;
+    background-color: rgb(231, 222, 234);
+}
+
+.rounded-pill {
+    font: 1.2rem "Fira Sans", sans-serif;
+    font-size: 25px;
+    background-color: rgb(231, 222, 234);
+    color: rgb(13, 110, 253);
+    text-decoration: none;
+    width: fit-content;
+    height: fit-content;
+}
+
+.container-for-form {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#wrapper {
+    display: flex;
+    height: 80vh;
+}
+
+#menu {
+    width: 15%;
+    background-color: #f8f9fa;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+#content {
+    flex: 1;
+    overflow: auto;
+}
+
+#list {
+    width: 20%;
+    background-color: #f8f9fa;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.outer-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 100px;
+    background-color: red;
+    color: white;
+}
+
+.inner-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 100px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 8px;
+}
+
+table td {
+    text-align: center;
+}
+
+.centercell {
+    display: flex;
+    justify-content: center;
+}
+
+.form-body {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.form-container {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.text-center {
+    text-align: center;
+}
