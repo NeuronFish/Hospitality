@@ -9,10 +9,11 @@
     <div id="menu">
         <ul>
             <li><a href="#">Menu Item 1</a></li>
-                @if (User.IsInRole("Manager"))
-                {
-            <li><a href="~/Redact/Building">Редагувати</a></li>
-                }
+            @if (User.IsInRole("Manager"))
+            {
+				<li><a href="~/Redact/Building">Редагувати</a></li>
+				<li><a href="~/Register/Index">Додати працівника</a></li>
+            }
         </ul>
     </div>
 

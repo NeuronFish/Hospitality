@@ -1,12 +1,8 @@
 ﻿using Hospitality.Data;
 using Hospitality.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using System.Linq;
 
 namespace Hospitality.Controllers
 {

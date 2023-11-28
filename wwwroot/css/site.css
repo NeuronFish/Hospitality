@@ -134,3 +134,27 @@ table td {
 .text-center {
     text-align: center;
 }
+
+.register-container {
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.select-div {
+    margin: 7px 0px 7px 0px;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.alert {
+    color: red;
+    margin: 3px 3px 0px 3px;
+}

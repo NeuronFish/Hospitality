@@ -1,0 +1,43 @@
+﻿@model Hospitality.Models.RegisterViewModel;
+@{
+    ViewData["Title"] = "Register";
+}
+
+<body>
+    <div class="register-container">
+        <h2 class="text-center mb-4">Реєстрація</h2>
+        <form asp-action="Index">
+            <div class="form-group">
+                <label asp-for="Name">Ім'я користувача</label>
+                <input asp-for="Name" type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname">Прізвище користувача</label>
+                <input asp-for="Surname" type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName">Email</label>
+                <input asp-for="UserName" type="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">Пароль</label>
+                <input asp-for="Password" type="text" class="form-control" required>
+            </div>
+            <div class="form-group select-div">
+                <label asp-for="Role">Оберіть роль:</label>
+                <select asp-for="Role" required>
+                    <option value="Manager">Менеджер</option>
+                    <option value="Employee">Обслуговування</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Зареєструвати</button>
+            @if (Model != null)
+            {
+                @foreach (string error in Model.Errors)
+                {
+                    <label class="alert">@error</label>
+                }
+            }
+        </form>
+    </div>
+</body>
