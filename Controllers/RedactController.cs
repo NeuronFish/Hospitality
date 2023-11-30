@@ -63,7 +63,6 @@ namespace Hospitality.Controllers
             return View(Context.Rooms.First(room => room.Id == roomId));
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult EditRoom(int id, string name)
         {
             Room.ChangeName(id, name, Context);

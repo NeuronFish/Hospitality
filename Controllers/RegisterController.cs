@@ -24,6 +24,7 @@ namespace Hospitality.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Index(RegisterViewModel model)
         {
             int hostelId = Context.Users.Find(this.User.FindFirst(ClaimTypes.NameIdentifier).Value).PlaceId;
@@ -39,7 +40,7 @@ namespace Hospitality.Controllers
             if (result.Succeeded)
             {
                 UserManager.AddToRoleAsync(user, model.Role);
-                return Redirect("~/Menu/Index");
+                return Redirect("~/Menu");
             }
             else
             {

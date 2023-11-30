@@ -158,3 +158,56 @@ table td {
     color: red;
     margin: 3px 3px 0px 3px;
 }
+
+.assign-container {
+    width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.assign-group {
+    margin-bottom: 20px;
+}
+.btn-confirm {
+    display: block;
+    margin-left: auto;
+    margin-top: 20px;
+}
+
+.assign-control {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.assign-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.assign-item {
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #ffffff;
+}
+
+.assign-description {
+    margin-top: 10px;
+}
+
+.btn-execute {
+    margin-top: 10px;
+}

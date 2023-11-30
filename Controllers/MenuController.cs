@@ -16,10 +16,20 @@ namespace Hospitality.Controllers
         {
             Context = context;
         }
+        [HttpGet]
         public IActionResult Index()
         {
             int hostelId = Context.Users.Find(this.User.FindFirst(ClaimTypes.NameIdentifier).Value).PlaceId;
-            return View(Hostel.GetData(hostelId, Context));
+            MenuViewModel model = new MenuViewModel();
+            model.SetData(hostelId, Context);
+            return View(model);
         }
+		public IActionResult Complete(int assingId)
+        {
+			int hostelId = Context.Users.Find(this.User.FindFirst(ClaimTypes.NameIdentifier).Value).PlaceId;
+            if (!Hostel.RemoveAssignment(assingId, hostelId, Context))
+                return NotFound();
+			return Redirect("~/Menu");
+		}
     }
 }

@@ -1,0 +1,38 @@
+﻿@model Hospitality.Models.AssignmentViewModel
+@{
+    ViewData["Title"] = "Assignment";
+}
+
+<body>
+    <div class="assign-container">
+        <h2 class="text-center mb-4">Створення завдання</h2>
+        <form asp-action="Index">
+            <div class="assign-group">
+                <label asp-for="SelectedRoom">Оберіть кімнату</label>
+                <select asp-for="SelectedRoom" class="assign-control" required>
+                    @foreach (var room in Model.Rooms)
+                    {
+                        <option value="@room.Key">@room.Value</option>
+                    }
+                </select>
+            </div>
+            @if (User.IsInRole("Manager"))
+            {
+            <div class="assign-group">
+                <label asp-for="SelectedPersonnel">Назначити працівника</label>
+                <select asp-for="SelectedPersonnel" class="assign-control" required>
+                    @foreach (var pers in Model.Personnel)
+                    {
+                        <option value="@pers.Key">@pers.Value</option>
+                    }
+                </select>
+            </div>
+            }
+            <div class="assign-group">
+                <label asp-for="Description">Опис завдання</label>
+                <textarea asp-for="Description" class="assign-control" rows="4" placeholder="Введіть опис..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-confirm">Створити</button>
+        </form>
+    </div>
+</body>

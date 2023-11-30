@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Hospitality.Models.Floor>
+﻿@model Hospitality.Models.MenuViewModel
 @{
     ViewData["Title"] = "Menu";
 }
@@ -12,8 +12,9 @@
             @if (User.IsInRole("Manager"))
             {
 				<li><a href="~/Redact/Building">Редагувати</a></li>
-				<li><a href="~/Register/Index">Додати працівника</a></li>
+				<li><a href="~/Register">Додати працівника</a></li>
             }
+			<li><a href="~/Assignment">Додати завдання</a></li>
         </ul>
     </div>
 
@@ -24,7 +25,7 @@
 				<td><h3>Поверхи</h3></td>
 				<td colspan="5"><h3>Кімнати</h3></td>
 			</tr>
-			@foreach (var floor in Model)
+			@foreach (var floor in Model.Floors)
 			{
 			<tr>
 				<td class="centercell">
@@ -47,13 +48,20 @@
     </div>
 
     <div id="list">
-        <!-- Your list content goes here -->
-        <ul>
-            <li>List Item 1</li>
-            <li>List Item 2</li>
-            <li>List Item 3</li>
-            <!-- Add more list items as needed -->
-        </ul>
+		@foreach (var assign in Model.Assignments)
+		{
+        <div class="assign-item">
+			<p><strong>Номер кімнати:</strong> @assign.Room</p>
+			<p><strong>Назначено:</strong> @assign.Personnel</p>
+			<div class="assign-description">
+			    <p><strong>Опис:</strong> @assign.Description</p>
+			</div>
+			<a asp-action="Complete" asp-route-assingId="@assign.Id" 
+			class="btn btn-primary">
+				Виконано
+			</a>
+		</div>
+		}
     </div>
 
 </div>

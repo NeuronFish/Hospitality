@@ -56,5 +56,17 @@ namespace Hospitality.Models
 			context.Floors.Remove(selected_floor);
 			context.SaveChanges();
 		}
+		public static bool RemoveAssignment(int assignId, int hostelId, HospitalityContext context)
+		{
+			Assignment? assign = context.Assignments.FirstOrDefault(assign => assign.Id == assignId);
+			if (assign == null)
+				return false;
+			int floorId = context.Rooms.First(room => room.Id == assign.RoomId).FloorId;
+			if (context.Floors.First(floor => floor.Id == floorId).HostelId != hostelId)
+				return false;
+			context.Remove(assign);
+			context.SaveChanges();
+			return true;
+		}
 	}
 }
