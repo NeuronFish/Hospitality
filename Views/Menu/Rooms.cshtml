@@ -1,0 +1,48 @@
+﻿@model IEnumerable<RoomViewModel>
+@{
+    ViewData["Title"] = "Rooms";
+}
+
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">Список кімнат</h2>
+        <div class="row">
+            @foreach (RoomViewModel room in Model)
+            {
+            <div class="col-md-4">
+                <div class="room-item">
+                    <p><strong>Номер кімнатіи:</strong> @room.Name</p>
+                    <p><strong>Поверх:</strong> @room.Stage</p>
+                    <div class="room-description">
+                        <p>
+                            <strong>Кількість спальних місць:</strong> @room.Sleepplaces<br />
+                            @room.SleepDesc
+                        </p>
+                    </div>
+                    <div class="room-description">
+                        <p>
+                            <strong>Додаткова інформація:</strong> <br />
+                            @room.Description
+                        </p>
+                    </div>
+                    <p><strong>Ціна за добу:</strong> @room.Price</p>
+                    @if (room.IsOccupied)
+                    {
+                    <a asp-action="SetFree" asp-route-roomId="@room.Id" 
+	        			class="btn btn-primary btn-register btn-danger">
+	        				<i class="fas fa-plus"></i> Звільнити
+	        		</a>
+                    }
+                    else
+                    {
+                    <a asp-action="Register" asp-route-roomId="@room.Id" 
+	        			class="btn btn-primary btn-register">
+	        				<i class="fas fa-plus"></i> Зареєструвати
+	        		</a>
+                    }
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</body>

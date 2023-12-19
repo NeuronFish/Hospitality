@@ -1,36 +1,35 @@
 ﻿@model Room
 @{
-    ViewData["Title"] = "Room Redact";
+    ViewData["Title"] = "Room Create";
 }
 
 <body>
     <div class="container room-container">
-        <h2 class="text-center mb-4">Редагування кімнати</h2>
-        <form asp-action="EditRoom">
+        <h2 class="text-center mb-4">Створення кімнати</h2>
+        <form asp-action="CreateRoom">
             <div class="room-group">
                 <label asp-for="Name">Назва:</label>
-                <input asp-for="Name" type="text" placeholder="@Model.Name" class="form-control" required>
+                <input asp-for="Name" type="text" class="form-control" required>
             </div>
-            <input asp-for="Id" type="text" placeholder="@Model.Id" class="d-none">
             <input asp-for="FloorId" type="text" placeholder="@Model.FloorId" class="d-none">
             <input asp-for="Index" type="text" placeholder="@Model.Index" class="d-none">
             <div class="room-group">
                 <label asp-for="Sleepplaces">Кількість спальних місць:</label>
-                <input asp-for="Sleepplaces" type="number" placeholder="@Model.Sleepplaces" class="form-control" min="0" required>
+                <input asp-for="Sleepplaces" type="number" class="form-control" min="0" required>
             </div>
             <div class="room-group">
                 <label asp-for="SleepDesc">Опис спальних місць:</label>
-                <input asp-for="SleepDesc" type="text" placeholder="@Model.SleepDesc" class="form-control">
+                <input asp-for="SleepDesc" type="text" class="form-control">
             </div>
             <div class="room-group">
                 <label asp-for="Description">Опис кімнати:</label>
-                <textarea asp-for="Description" placeholder="@Model.Description" class="form-control" rows="3" required></textarea>
+                <textarea asp-for="Description" class="form-control" rows="3" required></textarea>
             </div>
             <div class="room-group">
                 <label asp-for="Price">Ціна за добу:</label>
-                <input asp-for="Price" type="number" placeholder="@Model.Price" class="form-control" min="0" required>
+                <input asp-for="Price" type="number" class="form-control" min="0" required>
             </div>
-            <button type="submit" class="btn btn-primary float-right">Зберегти</button>
+            <button type="submit" class="btn btn-primary float-right">Створити</button>
         </form>
     </div>
 </body>

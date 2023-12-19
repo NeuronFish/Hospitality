@@ -132,12 +132,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/MyTest/Hospitality/Views/Menu/Guests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVudVxHdWVzdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/MyTest/Hospitality/Views/Menu/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVudVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/MyTest/Hospitality/Views/Menu/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVudVxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/MyTest/Hospitality/Views/Menu/Rooms.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVudVxSb29tcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/MyTest/Hospitality/Views/Redact/Building.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVkYWN0XEJ1aWxkaW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/MyTest/Hospitality/Views/Redact/CreateRoom.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVkYWN0XENyZWF0ZVJvb20uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/MyTest/Hospitality/Views/Redact/EditRoom.cshtml]

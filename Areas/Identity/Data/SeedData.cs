@@ -14,6 +14,7 @@ namespace Hospitality.Areas.Identity.Data
             using (var context = new HospitalityContext(
                 serviceProvider.GetRequiredService<DbContextOptions<HospitalityContext>>()))
             {
+                context.Database.EnsureCreated();
                 if (context.Users.Any())
                     return true; // DB has been seeded
                 else
@@ -39,32 +40,6 @@ namespace Hospitality.Areas.Identity.Data
             if (roleManager.FindByNameAsync("Employee").Result == null)
                 await roleManager.CreateAsync(new IdentityRole("Employee"));
         }
-        /*
-        private static async Task<string> EnsureUser(IServiceProvider serviceProvider,
-                                            string testUserPw, int hostelId)
-        {
-            var userManager = serviceProvider.GetService<UserManager<UserIdent>>();
-            var user = await userManager.FindByNameAsync("jo@jo.com");
-            if (user == null)
-            {
-                user = new UserIdent
-                {
-                    UserName = "jo@jo.com",
-                    Name = "Jo",
-                    Surname = "Jo",
-                    PlaceId = hostelId,
-                    EmailConfirmed = true
-                };
-                await userManager.CreateAsync(user, testUserPw);
-                await userManager.AddToRoleAsync(user, "Manager");
-            }
-            if (user == null)
-            {
-                throw new Exception("The password is probably not strong enough!");
-            }
-            return user.Id;
-        }
-        */
         private static int EnsureHostel(HospitalityContext context)
         {
             if (!context.Hostels.Any())
@@ -96,19 +71,31 @@ namespace Hospitality.Areas.Identity.Data
                     {
                         FloorId = id,
                         Index = 1,
-                        Name = "№111"
+                        Name = "№111",
+                        Sleepplaces = 3,
+                        SleepDesc = "Двоспальне та одномісне ліжка",
+                        Description = "Кімната з телевізором та тумбочкою",
+                        Price = 170
                     },
                     new Room()
                     {
                         FloorId = id,
                         Index = 2,
-                        Name = "№112"
+                        Name = "№112",
+                        Sleepplaces = 2,
+                        SleepDesc = "Два одномістні ліжка",
+                        Description = "Кімната з тумбочкою",
+                        Price = 125
                     },
                     new Room()
                     {
                         FloorId = id,
                         Index = 3,
-                        Name = "№113"
+                        Name = "№113",
+                        Sleepplaces = 1,
+                        SleepDesc = "Одномістне ліжко",
+                        Description = "Кімната з тумбочкою",
+                        Price = 100
                     }
                 });
                 id = context.Floors.First(f => f.Index == 2).Id;
@@ -118,13 +105,21 @@ namespace Hospitality.Areas.Identity.Data
                     {
                         FloorId = id,
                         Index = 1,
-                        Name = "№211"
+                        Name = "№211",
+                        Sleepplaces = 2,
+                        SleepDesc = "Двухспальне ліжко",
+                        Description = "Кімната з телевізором та тумбочкою",
+                        Price = 150
                     },
                     new Room()
                     {
                         FloorId = id,
                         Index = 2,
-                        Name = "№212"
+                        Name = "№212",
+                        Sleepplaces = 1,
+                        SleepDesc = "Одномістне ліжко",
+                        Description = "Кімната з телевізором та тумбочкою",
+                        Price = 125
                     }
                 });
                 context.SaveChanges();
@@ -138,30 +133,30 @@ namespace Hospitality.Areas.Identity.Data
             UserIdent[] users = new UserIdent[] {
                 new UserIdent
                 {
-                    UserName = "jo@jo.com",
-                    Name = "Jo",
-                    Surname = "Jo",
+                    UserName = "AndKashtan@gmail.com",
+                    Name = "Андрій",
+                    Surname = "Каштанов",
                     PlaceId = hostelId,
                     EmailConfirmed = true
                 },
                 new UserIdent
                 {
-                    UserName = "lucky36@io.com",
-                    Name = "Jhony",
-                    Surname = "Bungalo",
+                    UserName = "IvanBugr@gmail.com",
+                    Name = "Іван",
+                    Surname = "Багряний",
                     PlaceId = hostelId,
                     EmailConfirmed = true
                 },
                 new UserIdent
                 {
-                    UserName = "justwork@io.com",
-                    Name = "Silly",
-                    Surname = "Brat",
+                    UserName = "ArtemVsevol@gmail.com",
+                    Name = "Артем",
+                    Surname = "Всеволод",
                     PlaceId = hostelId,
                     EmailConfirmed = true
                 }
             };
-            string[] roles = new string[] { "Manager", "Manager", "Employee" };
+            string[] roles = new string[] { "Manager", "Employee", "Employee" };
             for (int i = 0; i < users.Length; i++)
             {
                 await userManager.CreateAsync(users[i], usersPW[i]);

@@ -25,6 +25,10 @@ footer {
     text-align: center;
 }
 
+.container-for-view {
+    margin: 5px;
+}
+
 .right-align {
     display: flex;
     justify-content: flex-end;
@@ -62,7 +66,7 @@ footer {
 
 #wrapper {
     display: flex;
-    height: 80vh;
+    height: 87vh;
 }
 
 #menu {
@@ -71,6 +75,30 @@ footer {
     padding: 15px;
     overflow-y: auto;
 }
+
+#sidebar {
+    width: 15%;
+    height: 100%;
+    background-color: #f8f9fa;
+    left: 0;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    color: #fff;
+}
+
+    #sidebar a {
+        padding: 15px 10px;
+        text-decoration: none;
+        font-size: 18px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+        #sidebar a:hover {
+            color: #000;
+        }
 
 #content {
     flex: 1;
@@ -114,30 +142,18 @@ table td {
     justify-content: center;
 }
 
-.form-body {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
+.room-container {
+    max-width: 600px;
+    margin: auto;
 }
 
-.form-container {
-    width: 300px;
-    padding: 20px;
-    border: 1px solid #ced4da;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-}
-
-.text-center {
-    text-align: center;
+.room-group {
+    margin-bottom: 20px;
 }
 
 .register-container {
     width: 400px;
-    margin: auto;
+    margin: 20px auto;
     padding: 20px;
     border: 1px solid #ced4da;
     border-radius: 8px;
@@ -161,7 +177,7 @@ table td {
 
 .assign-container {
     width: 600px;
-    margin: auto;
+    margin: 20px auto;
     padding: 20px;
     border: 1px solid #ced4da;
     border-radius: 8px;
@@ -211,3 +227,57 @@ table td {
 .btn-execute {
     margin-top: 10px;
 }
+
+.room-item {
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 15px;
+    background-color: #ffffff;
+}
+
+.room-description {
+    margin-top: 10px;
+}
+
+.btn-register {
+    margin-top: 10px;
+}
+
+.room-alert {
+    color: red;
+    text-align: center;
+}
+
+.registration-form {
+    max-width: 400px;
+    margin: auto;
+}
+
+.registration-group {
+    margin-bottom: 20px;
+}
+
+.guest-list {
+    max-width: 600px;
+    margin: auto;
+    padding: 5px 0 5px;
+}
+
+.guest-item {
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+    .guest-item h4 {
+        margin-bottom: 10px;
+        color: #007bff;
+    }
+
+    .guest-item p {
+        margin-bottom: 0;
+    }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IwVS0TkD3wYdJEm2YC206CBbSZpjASMNQd+OBB44/QE=",
+  "Hash": "oq42h7otHtghU59wDynlxCHqyQez2G27NX9DX7j4yVU=",
   "Source": "Hospitality",
   "BasePath": "_content/Hospitality",
   "Mode": "Default",
@@ -2106,6 +2106,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\pic\\Main.png"
+    },
+    {
+      "Identity": "E:\\MyTest\\Hospitality\\wwwroot\\pic\\RedIcon.png",
+      "SourceId": "Hospitality",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\MyTest\\Hospitality\\wwwroot\\",
+      "BasePath": "_content/Hospitality",
+      "RelativePath": "pic/RedIcon.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pic\\RedIcon.png"
     }
   ]
 }

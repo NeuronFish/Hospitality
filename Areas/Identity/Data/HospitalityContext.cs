@@ -15,6 +15,7 @@ public class HospitalityContext : IdentityDbContext<UserIdent>
     public DbSet<Hostel> Hostels { get; set; }
     public DbSet<Floor> Floors { get; set; }
     public DbSet<Room> Rooms { get; set; }
+    public DbSet<Guest> Guests { get; set; }
     public DbSet<Assignment> Assignments { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -42,6 +43,10 @@ public class HospitalityContext : IdentityDbContext<UserIdent>
             .WithOne(e => e.User)
             .HasForeignKey(e => e.UserId)
             .IsRequired(false);
+        builder.Entity<Room>()
+            .HasMany(e => e.Guests)
+            .WithOne(e => e.MRoom)
+            .HasForeignKey(e => e.RoomId);
         base.OnModelCreating(builder);
     }
 }

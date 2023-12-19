@@ -1,0 +1,20 @@
+﻿@model IEnumerable<GuestViewModel>
+@{
+    ViewData["Title"] = "Guests";
+}
+
+<body>
+    <div class="container guest-list">
+        <h2 class="text-center mb-4">Список гостей</h2>
+        @foreach (GuestViewModel guest in Model)
+        {
+        <div class="guest-item">
+            <h4>Ім'я: <span class="text-dark">@guest.Name</span></h4>
+            <h4>Прізвище: <span class="text-dark">@guest.Surname</span></h4>
+            <h4>Номер телефону: <span class="text-dark">@guest.PhoneNumber</span></h4>
+            <h4>Номер кімнати: <span class="text-dark">@guest.RoomName</span></h4>
+            <h4>Поверх: <span class="text-dark">@guest.Stage</span></h4>
+        </div>
+        }
+    </div>
+</body>

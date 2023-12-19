@@ -2,6 +2,7 @@
 using Hospitality.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace Hospitality.Controllers
@@ -19,7 +20,7 @@ namespace Hospitality.Controllers
 		public IActionResult Building()
         {
 			int hostelId = Context.Users.Find(this.User.FindFirst(ClaimTypes.NameIdentifier).Value).PlaceId;
-            return View(Hostel.GetData(hostelId, Context));
+            return View(Hostel.GetFloors(hostelId, Context));
         }
         private bool EnsureData(int floorId, int hostelId)
         {
@@ -34,17 +35,21 @@ namespace Hospitality.Controllers
         {
 			int hostelId = Context.Users.Find(this.User.FindFirst(ClaimTypes.NameIdentifier).Value).PlaceId;
 			Hostel.AddFloor(hostelId, Context);
-			return View("Building", Hostel.GetData(hostelId, Context));
+			return Redirect("/Redact/Building");
         }
         [HttpGet]
-        public IActionResult AddRoom(int floorId)
+        public IActionResult CreateRoom(int floorId)
         {
-            int hostelId = Context.Floors.First(floor => floor.Id == floorId).HostelId;
-			if (!EnsureData(floorId, hostelId))
-                return NotFound();
-			Floor.AddRoom(floorId, Context);
-			return View("Building", Hostel.GetData(hostelId, Context));
-		}
+            return View(new Room() { FloorId = floorId, Index = Floor.LastIndex(floorId, Context) + 1 });
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateRoom(Room room)
+        {
+            Context.Rooms.Add(room);
+            Context.SaveChanges();
+            return Redirect("/Redact/Building");
+        }
         [HttpGet]
         public IActionResult Delete(int floorId)
         {
@@ -52,22 +57,23 @@ namespace Hospitality.Controllers
 			if (!EnsureData(floorId, hostelId))
 				return NotFound();
 			Hostel.Remove(floorId, Context);
-            return View("Building", Hostel.GetData(hostelId, Context));
-		}
+            return Redirect("/Redact/Building");
+        }
         [HttpGet]
         public IActionResult EditRoom(int roomId)
         {
-            Models.Room? room = Context.Rooms.FirstOrDefault(room => room.Id == roomId);
+            Room? room = Context.Rooms.FirstOrDefault(room => room.Id == roomId);
             if (room == null)
                 return NotFound();
             return View(Context.Rooms.First(room => room.Id == roomId));
         }
         [HttpPost]
-        public IActionResult EditRoom(int id, string name)
+        [ValidateAntiForgeryToken]
+        public IActionResult EditRoom(Room room)
         {
-            Room.ChangeName(id, name, Context);
-            int hostelId = Context.Users.Find(this.User.FindFirst(ClaimTypes.NameIdentifier).Value).PlaceId;
-            return View("Building", Hostel.GetData(hostelId, Context));
+            Context.Rooms.Entry(room).State = EntityState.Modified;
+            Context.SaveChanges();
+            return Redirect("/Redact/Building");
         }
     }
 }

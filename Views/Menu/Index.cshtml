@@ -5,17 +5,15 @@
 
 <body>
 <div id="wrapper">
-
-    <div id="menu">
-        <ul>
-            <li><a href="#">Menu Item 1</a></li>
-            @if (User.IsInRole("Manager"))
-            {
-				<li><a href="~/Redact/Building">Редагувати</a></li>
-				<li><a href="~/Register">Додати працівника</a></li>
-            }
-			<li><a href="~/Assignment">Додати завдання</a></li>
-        </ul>
+    <div id="sidebar">
+        <a href="~/Menu/Rooms">Список кімнат</a>
+        @if (User.IsInRole("Manager"))
+        {
+			<a href="~/Redact/Building">Редагувати</a>
+			<a href="~/Register">Додати працівника</a>
+        }
+		<a href="~/Assignment">Додати завдання</a>
+		<a href="~/Menu/Guests">Список гостей</a>
     </div>
 
     <div id="content">

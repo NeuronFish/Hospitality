@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Hospitality.Models.Floor>
+﻿@model IEnumerable<Floor>
 @{
     ViewData["Title"] = "Building Redact";
 }
@@ -39,13 +39,13 @@
 					<div class="inner-box">
 						<h3>@room.Name</h3>
 						<a asp-action="EditRoom" asp-route-roomId="@room.Id">
-							<input type="image" src="/images/blog/72/button.png" alt="Button">
+							<input type="image" src="~/pic/RedIcon.png" alt="Button">
 						</a>
 					</div>
 				</td>
 				}
 				<td>
-					<a asp-action="AddRoom" asp-route-floorId="@floor.Id" 
+					<a asp-action="CreateRoom" asp-route-floorId="@floor.Id" 
 					class="btn btn-success">
 						<i class="fas fa-plus"></i> Додати
 					</a>

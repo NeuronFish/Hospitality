@@ -24,6 +24,7 @@ namespace Hospitality.Controllers
             return View(model);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Index(AssignmentViewModel model)
         {
             if (model.SelectedPersonnel == "None")

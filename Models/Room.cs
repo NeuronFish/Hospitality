@@ -8,13 +8,12 @@ namespace Hospitality.Models
         public int FloorId { get; set; }
         public int Index { get; set; }
         public string Name { get; set; }
+        public int Sleepplaces { get; set; }
+        public string SleepDesc { get; set; }
+        public string Description { get; set; }
+        public double Price { get; set; }
         public Floor MFloor { get; set; }
         public List<Assignment> Assignments { get; set; }
-
-        public static void ChangeName(int id, string name, HospitalityContext context)
-        {
-            context.Rooms.First(room => room.Id == id).Name = name;
-            context.SaveChanges();
-        }
+        public List<Guest> Guests { get; set; }
     }
 }

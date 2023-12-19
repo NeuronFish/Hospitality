@@ -14,7 +14,7 @@ namespace Hospitality.Models
         public List<UserIdent> Staff { get; set; }
         public List<Floor> Floors { get; set; }
 
-        public static IQueryable<Floor> GetData(int hostelId, HospitalityContext context)
+        public static IQueryable<Floor> GetFloors(int hostelId, HospitalityContext context)
         {
 			IQueryable<Floor> floors = context.Floors.Where(floor => floor.HostelId == hostelId)
 				.OrderByDescending(floor => floor.Index).Include(floor => floor.Rooms);
@@ -22,6 +22,35 @@ namespace Hospitality.Models
 				floor.Rooms.OrderBy(room => room.Index);
             return floors;
 		}
+		public static IEnumerable<RoomViewModel> GetRooms(int hostelId, HospitalityContext context)
+		{
+			List<RoomViewModel> rooms = new List<RoomViewModel>();
+            IQueryable<Floor> floors = context.Floors.Where(floor => floor.HostelId == hostelId)
+                .OrderByDescending(floor => floor.Index).Include(floor => floor.Rooms)
+				.ThenInclude(room => room.Guests);
+			foreach (Floor floor in floors)
+			{
+				floor.Rooms.OrderBy(room => room.Index);
+				foreach (Room room in floor.Rooms)
+				{
+					bool isOccupied = false;
+					if (room.Guests.Any())
+						isOccupied = true;
+                    rooms.Add(new RoomViewModel()
+					{
+						Id = room.Id,
+						Stage = floor.Index,
+						Name = room.Name,
+						Sleepplaces = room.Sleepplaces,
+						SleepDesc = room.SleepDesc,
+						Description = room.Description,
+						Price = room.Price,
+                        IsOccupied = isOccupied
+                    });
+				}
+			}
+			return rooms;
+        }
         public static void AddFloor(int hostelId, HospitalityContext context)
         {
 			int index = context.Floors.Where(floor => floor.HostelId == hostelId).Count() + 1;
@@ -67,6 +96,23 @@ namespace Hospitality.Models
 			context.Remove(assign);
 			context.SaveChanges();
 			return true;
+		}
+		public static List<GuestViewModel> GetGuests(int hostelId, HospitalityContext context)
+		{
+			List<GuestViewModel> model = new List<GuestViewModel>();
+			foreach (Floor floor in context.Floors.Where(floor => floor.HostelId == hostelId)
+				.Include(floor => floor.Rooms).ThenInclude(rooms => rooms.Guests))
+				foreach (Room room in floor.Rooms)
+					foreach (Guest guest in room.Guests)
+						model.Add(new GuestViewModel()
+						{
+							Name = guest.Name,
+							Surname = guest.Surname,
+							PhoneNumber = guest.PhoneNumber,
+							RoomName = room.Name,
+							Stage = floor.Index
+						});
+			return model;
 		}
 	}
 }
